@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Events List</title>
+</head>
+<body>
+  <h1>Available Events</h1>
+  <div id="events"></div>
+
+  <script>
+    fetch("https://fictional-space-couscous-6947rqrj4vp7cxp7.github.dev/api/events")
+      .then(res => res.json())
+      .then(data => {
+        let html = "";
+        data.forEach(event => {
+          html += `<h3>${event.title}</h3>
+                   <p>${event.date}</p>
+                   <p>${event.location}</p>
+                   <p>${event.description}</p>
+                   <hr>`;
+        });
+        document.getElementById("events").innerHTML = html;
+      });
+  </script>
+</body>
+</html>
